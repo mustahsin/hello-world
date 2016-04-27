@@ -4,10 +4,6 @@
 
 int main()
 {
-  std::string name;
-  //std::cout << "What is your name? ";
-  //getline (std::cin, name);
-  //std::cout << "Hello, " << name << "!\n";
   
   struct node{
       int data;
@@ -26,6 +22,7 @@ int main()
   int i=2;
   temp = start;
   
+  // building linked list
   while(i<5)
   {
       struct node *t = NULL;
@@ -39,6 +36,7 @@ int main()
       i++;
   }
   
+  // printing and counting nodes
   temp = start;
   last = start;
   int count =0;
@@ -51,5 +49,33 @@ int main()
   }
   printf("\nstart : %d ",start->data);
   printf("\nlast : %d ",last->data);
-  printf("\ncount : %d ",count);
+  printf("\ncount : %d\n ",count);
+  
+  //reversing linked list
+  struct node *prev = NULL;
+  struct node *current = NULL;
+  struct node *next = NULL;
+  
+  prev = NULL;
+  current = start;
+  
+  while(current!=NULL)
+  {
+      next = current->next;
+      current->next = prev;
+      prev = current;
+      current = next;
+      
+  }
+  start = prev;
+  
+  temp = start;
+  while(temp!=NULL)
+  {
+      count++;
+      printf("%d ",temp->data);
+      last = temp;
+      temp = temp->next;
+  }
 }
+  
